@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Hair Coalition</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black; /* Fallback color */
+            background-image: url('./images/folhas.webp'); /* Your repeating background image */
+            background-repeat: repeat; /* Repeat the background image */
+            color: white; /* White text color for contrast */
+        }
+        .navbar-custom {
+            padding: 20px; /* Consistent navbar padding */
+        }
+        .login-container {
+            max-width: 400px; /* Limit width for login form */
+            margin: 100px auto; /* Center the form vertically */
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.75); /* 50% transparent dark background */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        }
+        .login-container h2 {
+            margin-bottom: 20px; /* Space below the heading */
+            text-align: center; /* Center the heading */
+        }
+        .btn-primary {
+            background-color: black; /* Bootstrap primary button color */
+            border-color: black; /* Consistent border color */
+        }
+        .btn-primary:hover {
+            background-color: gray; /* Darker blue on hover */
+            border-color: gray; /* Consistent border color on hover */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
+    <div class="navbar-logo">
+        <a class="navbar-brand" href="index.html">
+            <strong>
+                <div style="line-height: 1;">
+                    THE<br>
+                    HAIR<br>
+                    COALITION
+                </div>
+            </strong>
+        </a>
+    </div>
+</nav>
+
+<!-- Login Container -->
+<div class="login-container">
+    <h2>Login</h2>
+    <form>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="selecao_rosto.html" class="text-white">Esqueceu sua senha?</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

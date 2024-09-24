@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hair Coalition</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom style for the logo section */
+    .navbar-logo {
+      text-align: left;
+    }
+
+    .navbar-logo .navbar-brand {
+      font-size: 2.5rem; /* Increase the font size of the logo */
+      line-height: 1.2;  /* Adjust the line height to keep spacing intact */
+    }
+
+    /* Navbar styling */
+    .navbar-custom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 20px; /* Default padding */
+    }
+
+    /* Media query for larger screens */
+    @media (min-width: 992px) {
+      .navbar-custom {
+        padding: 40px; /* Increase padding for larger screens */
+      }
+
+      .map-container {
+            display: block; /* Show the iframe */
+        }
+        .address-text {
+            display: none; /* Hide the address text */
+        }
+    }
+
+    /* Hide the iframe and show address text on smaller screens */
+    @media (max-width: 991px) {
+        .map-container {
+            display: none; /* Hide the iframe */
+        }
+        .address-text {
+            display: block; /* Show the address text */
+        }
+    }
+
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Dropdown icon */
+    .navbar-toggler {
+      border: none; /* Remove border from the icon */
+      position: absolute; /* Position it absolutely */
+      right: 15px; /* Adjust right position */
+      top: 15px; /* Adjust top position for vertical alignment */
+    }
+
+    .navbar-toggler-icon {
+      background-color: black; /* Black dot for the dropdown icon */
+      width: 30px; /* Size of the dot */
+      height: 30px; /* Size of the dot */
+      border-radius: 50%; /* Make it a circle */
+    }
+
+    /* Main image section */
+    .main-image-section {
+      text-align: center;
+      margin-top: 20px;
+      height: 80vh; /* Reduzir a altura da imagem para 80% do viewport */
+    }
+
+    .main-image-section img {
+      width: 150vw; /* Adjust to vw for better responsiveness */
+      height: 70vh;
+      object-fit: cover; /* Garantir que a imagem cubra o contêiner sem distorção */
+      border-radius: 15px; /* Arredondar os cantos da imagem */
+    }
+
+    /* About section styling */
+    .about-section {
+        max-width: 130vh; /* Limit width for larger screens */
+        padding: 40px;
+    }
+
+    .about-section h2 {
+      margin-bottom: 20px; /* Space below the heading */
+      font-size: 2rem; /* Increase heading size */
+      text-align: center; /* Center the heading */
+    }
+
+    .about-section p {
+      text-align: justify; /* Justify text for a cleaner look */
+      line-height: 1.6; /* Line height for better readability */
+    }
+
+    .about-section .row {
+    display: flex; /* Use flexbox for the row */
+    }
+
+    .box {
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    display: flex; /* Flexbox for the card body */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    height: 100%; /* Full height of the parent */
+    }
+
+    .box:hover {
+    transform: translate(-5px, -5px) scale(1.05); /* Move and scale on hover */
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #f8f9fa; /* Light gray background */
+        color: #343a40; /* Dark text color */
+    }
+
+    footer h5 {
+        margin-bottom: 15px; /* Space below headings */
+    }
+
+    footer a {
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    footer a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
+  <div class="navbar-logo">
+    <a class="navbar-brand" href="#">
+      <strong>
+        <div style="line-height: 1;">
+          THE<br>
+          HAIR<br>
+          COALITION
+        </div>
+      </strong>
+    </a>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-center"></div>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-link" href="#sobre-nos">SOBRE NÓS</a>
+      <a class="nav-link" href="login.html">SERVIÇOS</a>
+      <a class="nav-link" href="#">PROFISSIONAIS</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid main-image-section">
+  <div class="main-image-wrapper">
+    <img src="./images/preview.webp" alt="Main Image" class="img-fluid">
+  </div>
+</div>
+
+<!-- About Section -->
+<div class="container about-section" id="sobre-nos">
+    <h2>Sobre Nós</h2>
+    <p>
+      Bem-vindo ao The Hair Coalition, um verdadeiro ícone de beleza e elegância em Blumenau, com mais de 25 anos de tradição. 
+      Aqui, nos dedicamos a oferecer serviços de alta qualidade e um atendimento caloroso e personalizado.
+    </p>
+    <p>
+      Nossa equipe de profissionais apaixonados valoriza a atemporalidade da beleza, garantindo que cada cliente se sinta e saia deslumbrante. 
+      Venha desfrutar de uma experiência transformadora em um ambiente acolhedor e sofisticado!
+    </p>
+    <div class="row">
+      <div class="col-md-6 mb-6">
+        <div class="card box">
+          <img src="./images/profissional.webp" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title text-center">Profissionais</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-6">   
+        <div class="card box">
+          <img src="./images/servicos.webp" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title text-center">Serviços</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center" style="padding: 20px 0; margin-top: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 mb-6">
+                <h5>Contato</h5>
+                <p class="text-white">Email: contato@thehaircoalition.com</p>
+                <p class="text-white">Telefone: (47) 1234-5678</p>
+                <h5>Sociais</h5>
+                <a href="#" class="text-white">Facebook</a><br>
+                <a href="#" class="text-white">Instagram</a><br>
+                <a href="#" class="text-white">Twitter</a>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <h5>Endereço</h5>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1sen!2sbr!4v1727120657705!5m2!1sen!2sbr!6m8!1m7!1sQqEl_dIzB0mU_pAQN_1jHA!2m2!1d-26.91989523959847!2d-49.06868807934762!3f202.94137167748204!4f3.9627678633820267!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="address-text">
+                    <p>Rua José Amandio Leite, 81<br>Blumenau, SC, Brasil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center" style="padding: 10px; background-color: #333;">
+        <p class="mb-0">&copy; 2024 The Hair Coalition. Todos os direitos reservados.</p>
+    </div>
+</footer>
+  
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
