@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .service-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .service-card img {
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            margin-bottom: 15px;
+        }
+
+        .btn-schedule {
+            margin-top: 10px;
+        }
+
+        /* Dropdown icon / */
+        .navbar-toggler {
+            border: none;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
+        <div class="navbar-logo">
+          <a class="navbar-brand" href="index.html">
+            <strong>
+              <div style="line-height: 1;">
+                THE<br>
+                HAIR<br>
+                COALITION
+              </div>
+            </strong>
+          </a>
+        </div>
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="navbar-center"></div>
+      
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="index.html#sobre-nos">SOBRE NÓS</a>
+            <a class="nav-link" href="servicos.html">SERVIÇOS</a>
+            <a class="nav-link" href="profissionais.html">PROFISSIONAIS</a>
+          </div>
+        </div>
+    </nav>
+
+      <!-- Services Section -->
+      <div class="container services">
+        <h1 class="text-center my-5">Serviços</h1>
+        <div class="row">
+            <!-- Service 1 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Corte+Feminino" alt="Corte Feminino">
+                    <h3>Corte Feminino</h3>
+                    <p class="service-price">R$ 80,00</p>
+                    <p class="service-description">Corte moderno e personalizado para cada cliente, feito com técnicas atualizadas.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Corte+Masculino" alt="Corte Masculino">
+                    <h3>Corte Masculino</h3>
+                    <p class="service-price">R$ 50,00</p>
+                    <p class="service-description">Corte masculino com estilo e precisão, para valorizar o visual.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Coloracao" alt="Coloração Completa">
+                    <h3>Coloração Completa</h3>
+                    <p class="service-price">R$ 150,00</p>
+                    <p class="service-description">Coloração capilar feita por especialistas, com produtos de alta qualidade.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Service 4 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Escova+e+Penteado" alt="Escova e Penteado">
+                    <h3>Escova e Penteado</h3>
+                    <p class="service-price">R$ 60,00</p>
+                    <p class="service-description">Escova modeladora e penteado sofisticado para ocasiões especiais.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Manicure+e+Pedicure" alt="Manicure e Pedicure">
+                    <h3>Manicure e Pedicure</h3>
+                    <p class="service-price">R$ 40,00</p>
+                    <p class="service-description">Cuidado completo para suas mãos e pés, com esmaltação impecável.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="https://via.placeholder.com/300x200?text=Tratamento+Capilar" alt="Tratamento Capilar">
+                    <h3>Tratamento Capilar</h3>
+                    <p class="service-price">R$ 120,00</p>
+                    <p class="service-description">Tratamentos capilares para hidratação, reconstrução e nutrição dos fios.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="scheduleService()">Agendar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        function scheduleService() {
+            const isLogged = false // substituir por lógica de identificar login
+
+            if (isLogged) {
+                window.location.href="principal.html" // depois vai ir para área de agendamento com informação de qual serviço
+            } else {
+                window.location.href="login.html"
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
