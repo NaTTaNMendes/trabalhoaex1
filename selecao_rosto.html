@@ -59,6 +59,15 @@
         .card:hover {
             transform: translate(-5px, -5px) scale(1.05);
         }
+        @media (max-width: 767px) {
+            .navbar-nav {
+                flex-direction: column; /* Stack items vertically */
+            }
+            .nav-item {
+                width: 100%; /* Make nav items full width */
+                text-align: right; /* Center text */
+            }
+        }
     </style>
 </head>
 <body>
@@ -77,6 +86,20 @@
             </strong>
         </a>
     </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="n   avbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link fa fa-user fa-2x" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-cog fa-2x" href="#"></a>
+            </li>
+            <div style="color: black;">TROCAR O FONTAWESOME POR OUTROS</div> 
+        </ul>
+    </div>
 </nav>
 
 <!-- Face Shape Selection Section -->
@@ -84,7 +107,7 @@
     <h2 style="color: white; text-align: center; margin-top: 3%; margin-bottom: 3%;">Selecione o seu formato de rosto</h2>
     <div class="face-shape-cards row">
         <div class="col-md-4">
-            <div class="card">
+            <div class="card" onclick="selectHeadType('Redondo')">
                 <img src="./images/imagem cabeca.png" class="card-img-top" alt="Face Shape 1">
                 <div class="card-body text-center">
                     <p class="card-text">Redondo</p>
@@ -92,7 +115,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card"">
+            <div class="card" onclick="selectHeadType('Triangular')">
                 <img src="./images/imagem cabeca.png" class="card-img-top" alt="Face Shape 1">
                 <div class="card-body text-center">
                     <p class="card-text">Triangular</p>
@@ -100,7 +123,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
+            <div class="card" onclick="selectHeadType('Quadrado')">
                 <img src="./images/imagem cabeca.png" class="card-img-top" alt="Face Shape 1">
                 <div class="card-body text-center">
                     <p class="card-text">Quadrado</p>
@@ -109,7 +132,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" onclick="selectHeadType('Oval')">
                     <img src="./images/imagem cabeca.png" class="card-img-top" alt="Face Shape 1">
                     <div class="card-body text-center">
                         <p class="card-text">Oval</p>
@@ -117,7 +140,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card" onclick="selectHeadType('Diamante')">
                     <img src="./images/imagem cabeca.png" class="card-img-top" alt="Face Shape 1">
                     <div class="card-body text-center">
                         <p class="card-text">Diamante</p>
@@ -128,7 +151,22 @@
     </div>
 </div>
 
-<button><a href="selecao_curvatura.html"></a></button>
+<script>
+    function selectHeadType(headType) {
+        // Save the selection in localStorage
+        localStorage.setItem('selectHeadType', headType);
+
+        // Redirect to another page (e.g., results.html or any page)
+        window.location.href = 'selecao_curvatura.html';  // Change this to your destination page
+    }
+</script>
+
+<script>
+    function logOff() {
+        alert("You have logged off.");
+        window.location.href = 'login.html'; // Redirect to a login page
+    }
+</script>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

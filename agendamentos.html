@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Agendamentos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #000;
+            background-image: url('./images/folhas.webp');
+            background-repeat: repeat;
+        }
+        .navbar-custom {
+            padding: 20px;
+        }
+        .rpg-card {
+            background-color: #333;
+            margin: 10px;
+        }
+        .btn-cancel {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+        }
+        .btn-cancel:hover {
+            background-color: #ff3333;
+        }
+        @media (max-width: 767px) {
+            .navbar-nav {
+                flex-direction: column; /* Stack items vertically */
+            }
+            .nav-item {
+                width: 100%; /* Make nav items full width */
+                text-align: right; /* Center text */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
+        <div class="navbar-logo">
+            <a class="navbar-brand" href="index.html">
+                <strong>
+                    <div style="line-height: 1;">
+                        THE<br>
+                        HAIR<br>
+                        COALITION
+                    </div>
+                </strong>
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="n   avbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link fa fa-user fa-2x" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fa fa-cog fa-2x" href="#"></a>
+                </li>
+                <div style="color: black;">TROCAR O FONTAWESOME POR OUTROS</div> 
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Agendamentos Section -->
+    <div class="container mt-5">
+        <h3 class="text-center">Agendamentos</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-wrap">
+                    <!-- Example appointment data -->
+                    <script>
+                        const appointments = [
+                            {
+                                profissional: 'Jane Smith',
+                                servicos: ['Corte de Cabelo', 'Tratamento Capilar'],
+                                data: '2024-09-29',
+                                horario: '10:00',
+                            },
+                            {
+                                profissional: 'John Doe',
+                                servicos: ['Pintura'],
+                                data: '2024-09-30',
+                                horario: '12:00',
+                            },
+                            {
+                                profissional: 'Paula Johnson',
+                                servicos: ['Corte de Cabelo'],
+                                data: '2024-10-01',
+                                horario: '09:00',
+                            }
+                        ];
+                    </script>
+
+                    <!-- Function to populate the appointments -->
+                    <script>
+                        function populateAppointments() {
+                            const container = document.querySelector('.d-flex.flex-wrap');
+
+                            appointments.forEach((appointment, index) => {
+                                const card = document.createElement('div');
+                                card.classList.add('rpg-card', 'flex-grow-1', 'p-3', 'col-md-4');
+
+                                const cardContent = `
+                                    <h4 class="rpg-card-title">${appointment.profissional}</h4>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Serviços: <span>${appointment.servicos.join(', ')}</span></li>
+                                        <li class="list-group-item">Data: <span>${appointment.data}</span></li>
+                                        <li class="list-group-item">Horário: <span>${appointment.horario}</span></li>
+                                    </ul>
+                                    <button type="button" class="btn btn-cancel" onclick="cancelAppointment(${index})">Cancelar</button>
+                                `;
+
+                                card.innerHTML = cardContent;
+                                container.appendChild(card);
+                            });
+                        }
+
+                        function cancelAppointment(index) {
+                            if (confirm('Tem certeza de que deseja cancelar este agendamento?')) {
+                                appointments.splice(index, 1); // Remove the appointment from the array
+                                document.querySelector('.d-flex.flex-wrap').innerHTML = ''; // Clear previous content
+                                populateAppointments(); // Re-render the appointments
+                            }
+                        }
+
+                        // Populate the appointments on page load
+                        window.onload = populateAppointments;
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logOff() {
+            alert("You have logged off.");
+            window.location.href = 'login.html'; // Redirect to a login page
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

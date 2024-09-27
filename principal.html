@@ -53,6 +53,16 @@
         .list-group-item span {
             float: right;
         }
+
+        @media (max-width: 767px) {
+            .navbar-nav {
+                flex-direction: column; /* Stack items vertically */
+            }
+            .nav-item {
+                width: 100%; /* Make nav items full width */
+                text-align: right; /* Center text */
+            }
+        }
     </style>
 </head>
 <body>
@@ -69,13 +79,22 @@
                 </strong>
             </a>
         </div>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-user fa-2x" style="color: black;"></i></a>
-            </li>
-        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="n   avbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link fa fa-user fa-2x" href="#"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fa fa-cog fa-2x" href="#"></a>
+                </li>
+                <div style="color: black;">TROCAR O FONTAWESOME POR OUTROS</div> 
+            </ul>
+        </div>
     </nav>
-
+    
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-8">
@@ -107,7 +126,7 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-4">
-                        <div class="card h-100">
+                        <div class="card h-100" onclick="goToAgendar()">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Agendar</h5>
                                 <p class="card-text">Agendar cortes, tratamentos, pinturas, etc.</p>
@@ -115,7 +134,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100">
+                        <div class="card h-100" onclick="goToAgendamentos()">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Agendamentos</h5>
                                 <p class="card-text">Verificar os agendamentos para os atendimentos que irão ocorrer.</p>
@@ -130,25 +149,43 @@
                             </div>
                         </div>
                     </div>
-                </div>                
-            </div>
-            <div class="col-md-4">
-                <div class="container-right">
-                    <div class="rpg-card">
-                        <div class="rpg-card-content">
-                            <h4 class="rpg-card-title">Nattan Mendes Tinonin</h4>
-                            <ul class="list-group">
-                                <li class="list-group-item">Tipo de cabelo: <span id="hairType">Ondulado</span></li>
-                                <li class="list-group-item">Formato de rosto: <span id="faceFormat">Redondo</span></li>
-                                <li class="list-group-item">Profissional favorito: <span id="favoriteProfessional">Jane Smith</span></li>
-                                <li class="list-group-item">Pontos fidelidade: <span id="points">1200</span></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <div class="col-md-4 h-100 d-flex flex-column">
+                <div class="container-right flex-grow-1 d-flex flex-column">
+                  <div class="rpg-card flex-grow-1">
+                    <div class="rpg-card-content">
+                      <h4 class="rpg-card-title">Nattan Mendes Tinonin</h4>
+                      <ul class="list-group">
+                        <li class="list-group-item">Tipo de cabelo: <span id="hairType">Ondulado</span></li>
+                        <li class="list-group-item">Formato de rosto: <span id="faceFormat">Redondo</span></li>
+                        <li class="list-group-item">Profissional favorito: <span id="favoriteProfessional">Jane Smith</span></li>
+                        <li class="list-group-item">Pontos fidelidade: <span id="points">1200</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="container-fluid">
+                    <div class="d-flex justify-content-center" style="margin: 25px;">
+                      <button type="button" class="btn btn-dark"><a href="selecao_rosto.html">Atualizar status</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
+
+    <script>
+        function goToAgendar() {
+            window.location.href = 'agendar.html'; 
+        }
+        function goToAgendamentos() {
+            window.location.href = 'agendamentos.html'; 
+        }
+        function logOff() {
+            alert("You have logged off.");
+            window.location.href = 'login.html'; // Redirect to a login page
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
