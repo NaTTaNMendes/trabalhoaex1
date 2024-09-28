@@ -1,0 +1,81 @@
+.navbar {
+    padding: 20px;
+}
+.navbar-toggler {
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.navbar-toggler-icon {
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+@media (max-width: 767px) {
+    .nav-item {
+        text-align: right;
+    }
+}
+.card {
+    background-color: #444;
+    color: #fff;
+}
+.card-servico {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    height: 80px;
+    text-align: center;
+    align-content: center;
+}
+.card-servico.expanded {
+    height: 81px;
+    background-color: #222;
+    transform: scale(1.05);
+}
+.btn-dark {
+    background-color: #333;
+    border-color: #555;
+    border-radius: 5px;
+}
+.btn-dark:hover {
+    background-color: #222;
+}
+.form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+.form-control:focus {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+    box-shadow: none;
+}
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(51, 51, 51, 0.75);
+    border-radius: 5px;
+    color: white;
+}
+.login-container h2 {
+    text-align: center;
+}
+.cartao-selecao:hover {
+    transition: 0.3s;
+    transform: translate(-5px, -5px) scale(1.05);  
+}
+@media (max-width: 767px) {
+    .cartao-selecao {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

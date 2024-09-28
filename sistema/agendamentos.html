@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Agendamentos</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="../css/estilos_sistema.css" rel="stylesheet">
+    <link href="../css/classes_sistema.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        body {
-            background-color: #000;
-            background-image: url('./images/folhas.webp');
-            background-repeat: repeat;
-        }
-        .navbar-custom {
-            padding: 20px;
-        }
         .rpg-card {
             background-color: #333;
             margin: 10px;
@@ -39,34 +33,7 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
-        <div class="navbar-logo">
-            <a class="navbar-brand" href="index.html">
-                <strong>
-                    <div style="line-height: 1;">
-                        THE<br>
-                        HAIR<br>
-                        COALITION
-                    </div>
-                </strong>
-            </a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="n   avbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link fa fa-user fa-2x" href="#"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fa fa-cog fa-2x" href="#"></a>
-                </li>
-                <div style="color: black;">TROCAR O FONTAWESOME POR OUTROS</div> 
-            </ul>
-        </div>
-    </nav>
+    <div id="navbar"></div>
 
     <!-- Agendamentos Section -->
     <div class="container mt-5">
@@ -138,13 +105,7 @@
         </div>
     </div>
 
-    <script>
-        function logOff() {
-            alert("You have logged off.");
-            window.location.href = 'login.html'; // Redirect to a login page
-        }
-    </script>
-
+    <script type="text/javascript" src="../js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

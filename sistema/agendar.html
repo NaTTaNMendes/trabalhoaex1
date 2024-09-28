@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Agendar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/estilos_sistema.css" rel="stylesheet">
+    <link href="../css/classes_sistema.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card" style="margin-bottom: 6%;">
+                    <div class="card-header text-center"><h3>Agendar Atendimento</h3></div>
+                    <div class="card-body">
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="serviceType">Tipos de Serviço</label>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="corte_masculino" onclick="toggleCard('corte_masculino')"><h5>Corte Masculino</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="corte_feminino" onclick="toggleCard('corte_feminino')"><h5>Corte Feminino</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="tratamento_capilar" onclick="toggleCard('tratamento_capilar')"><h5>Tratamento Capilar</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="coloracao" onclick="toggleCard('coloracao')"><h5>Coloração</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="escova" onclick="toggleCard('escova')"><h5>Escova</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="manicure" onclick="toggleCard('manicure')"><h5>Manicure</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="pedicure" onclick="toggleCard('pedicure')"><h5>Pedicure</h5></div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card-servico" id="tratamento" onclick="toggleCard('tratamento')"><h5>Tratamento</h5></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="professionalSelect">Profissional</label>
+                                <select class="form-control" id="professionalSelect">
+                                    <option>Jane Smith</option>
+                                    <option>John Doe</option>
+                                    <option>Paula Johnson</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dateInput">Data</label>
+                                <input type="date" class="form-control" id="dateInput" onchange="updateTimeSlots()">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeInput">Horário</label>
+                                <select class="form-control" id="timeInput">
+                                    <option>Selecione um horário</option>
+                                    <!-- Time options will be inserted here based on availability -->
+                                </select>
+                            </div>
+                            
+                        
+                            <div class="form-group">
+                                <label for="notes">Observações (Opcional)</label>
+                                <textarea class="form-control" id="notes" rows="3" placeholder="Escreva algo..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-block">Confirmar Agendamento</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle card expansion and collapse without resizing the form
+        function toggleCard(serviceId) {
+            const card = document.getElementById(serviceId);
+            card.classList.toggle('expanded');
+        }
+
+        // Hardcoded unavailable times (for example purposes)
+        const unavailableTimes = {
+            '2024-09-28': ['09:00', '10:00', '14:00'], // These slots are reserved
+            '2024-09-29': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'], // Reserved slots for this date
+        };
+
+        // Function to update available time slots based on selected date
+        function updateTimeSlots() {
+            const date = document.getElementById('dateInput').value;
+            const timeInput = document.getElementById('timeInput');
+            
+            // Clear previous time options
+            timeInput.innerHTML = '';
+
+            const allTimes = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
+            const reservedTimes = unavailableTimes[date] || []; // Get reserved times for selected date
+
+            // Add available times to the select input
+            allTimes.forEach(time => {
+                if (!reservedTimes.includes(time)) {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.text = time;
+                    timeInput.appendChild(option);
+                }
+            });
+
+            // If no available times, show a message
+            if (timeInput.options.length === 0) {
+                const option = document.createElement('option');
+                option.value = '';
+                option.text = 'Nenhum horário disponível';
+                timeInput.appendChild(option);
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="../js/utils.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
