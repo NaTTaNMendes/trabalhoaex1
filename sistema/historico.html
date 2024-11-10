@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Agendamentos Passados</title>
+    <title>Histórico de Agendamentos</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/estilos_sistema.css" rel="stylesheet">
     <link href="../css/classes_sistema.css" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
     <div id="navbar"></div>
     <div class="container mt-5">
-        <h3 class="text-center">Agendamentos</h3>
+        <h3 class="text-center">Histórico de Agendamentos</h3>
     </div>
     <div class="container">
         <div class="table-responsive">
@@ -23,7 +23,6 @@
                         <th scope="col">Horário</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Profissional</th>
-                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,85 +31,49 @@
         </div>
     </div>
     <script>
-
-        const appointments = [
+        const pastAppointments = [
             {
                 profissional: 'Jane Smith',
                 servicos: ['Corte de Cabelo', 'Tratamento Capilar'],
-                data: '2024/09/29',
+                data: '2024/07/15',
                 horario: '10:00',
             },
             {
                 profissional: 'John Doe',
                 servicos: ['Pintura'],
-                data: '2024/09/30',
+                data: '2024/07/20',
                 horario: '12:00',
             },
             {
                 profissional: 'Paula Johnson',
                 servicos: ['Corte de Cabelo'],
-                data: '2024/10/01',
-                horario: '09:00',
-            },
-            {
-                profissional: 'Jane Smith',
-                servicos: ['Corte de Cabelo', 'Tratamento Capilar'],
-                data: '2024/09/29',
-                horario: '10:00',
-            },
-            {
-                profissional: 'John Doe',
-                servicos: ['Pintura'],
-                data: '2024/09/30',
-                horario: '12:00',
-            },
-            {
-                profissional: 'Paula Johnson',
-                servicos: ['Corte de Cabelo'],
-                data: '2024/10/01',
+                data: '2024/07/22',
                 horario: '09:00',
             }
         ];
-
-        function populateAppointments() {
+        function populatePastAppointments() {
             const container = document.querySelector('tbody');
 
-            appointments.forEach((appointment, index) => {
-                const card = document.createElement('tr');
-
-                const cardContent = `
-                        <td>${appointment.data}</td>
-                        <td>${appointment.horario}</td>
-                        <td>${appointment.servicos.join(', ')}</td>
-                        <td>${appointment.profissional}</td>
-                        <td>
-                            <button class="btn cancel-btn btn-sm" onclick="cancelarAgendamento(this)">Cancelar</button>
-                        </td>
+            pastAppointments.forEach((appointment) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${appointment.data}</td>
+                    <td>${appointment.horario}</td>
+                    <td>${appointment.servicos.join(', ')}</td>
+                    <td>${appointment.profissional}</td>
                 `;
-
-                card.innerHTML = cardContent;
-                container.appendChild(card);
+                container.appendChild(row);
             });
 
             if (container.children.length === 0) {
                 const emptyRow = document.createElement('tr');
                 emptyRow.classList.add('text-center');
-                emptyRow.innerHTML = '<td colspan="5">Nenhum agendamento disponível.</td>';
+                emptyRow.innerHTML = '<td colspan="4">Nenhum histórico de agendamentos disponível.</td>';
                 container.appendChild(emptyRow);
-                return;
             }
         }
 
-        function cancelarAgendamento(button) {
-            if (confirm("Tem certeza que deseja cancelar este agendamento?")) {
-                // Lógica para cancelar o agendamento, exemplo: remoção da linha
-                let row = button.parentNode.parentNode;
-                row.parentNode.removeChild(row);
-                alert("Agendamento cancelado com sucesso.");
-            }
-        }
-
-        window.onload = populateAppointments;
+        window.onload = populatePastAppointments;
     </script>
     <script type="text/javascript" src="../js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

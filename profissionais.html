@@ -5,63 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profissionais</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        
-        .professional-card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .professional-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        .social-icons i {
-            margin: 5px;
-            font-size: 24px;
-            color: #555;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .carousel {
-            margin-top: 15px;
-        }
-
-        .btn-schedule {
-            margin-top: 10px;
-        }
-
-        /* Dropdown icon / */
-        .navbar-toggler {
-            border: none;
-            position: absolute;
-            right: 15px;
-            top: 15px;
-        }
-
-        .navbar-toggler-icon {
-            background-color: black;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-    </style>
+    <link href="../css/estilos_inicio.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white navbar-custom">
         <div class="navbar-logo">
           <a class="navbar-brand" href="index.html">
@@ -89,15 +36,12 @@
           </div>
         </div>
     </nav>
-
-      <!-- Professional Cards Section -->
-      <div class="container professionals">
+    <div class="container professionals">
         <h1 class="text-center my-5">Profissionais</h1>
         <div class="row">
-            <!-- Professional 1 -->
             <div class="col-md-4">
                 <div class="professional-card">
-                    <img src="https://via.placeholder.com/150" alt="Foto do profissional" class="professional-img">
+                    <img src="images/cabelereira-1.jpeg" alt="Foto do profissional" class="professional-img">
                     <h3>Maria Silva</h3>
                     <p>Especialista em cortes femininos</p>
                     <div class="social-icons">
@@ -105,17 +49,16 @@
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
-                    <!-- Carrossel de Trabalhos -->
                     <div id="carousel1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 1">
+                                <img src="images/cab1-fot1.jpeg" class="d-block w-100" alt="Trabalho 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 2">
+                                <img src="images/cab1-fot2.jpeg" class="d-block w-100" alt="Trabalho 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 3">
+                                <img src="images/cab1-fot3.jpeg" class="d-block w-100" alt="Trabalho 3">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
@@ -127,15 +70,12 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <!-- Button to Schedule -->
-                    <button class="btn btn-dark btn-schedule" onclick="scheduleTime()">Marcar Horário</button>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Marcar Horário</button>
                 </div>
             </div>
-
-            <!-- Professional 2 -->
             <div class="col-md-4">
                 <div class="professional-card">
-                    <img src="https://via.placeholder.com/150" alt="Foto do profissional" class="professional-img">
+                    <img src="images/cabelereira-2.jpeg" alt="Foto do profissional" class="professional-img">
                     <h3>Carlos Souza</h3>
                     <p>Especialista em coloração e penteados</p>
                     <div class="social-icons">
@@ -143,17 +83,16 @@
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
-                    <!-- Carrossel de Trabalhos -->
                     <div id="carousel2" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 1">
+                                <img src="images/cab2-fot1.jpeg" class="d-block w-100" alt="Trabalho 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 2">
+                                <img src="images/cab2-fot2.jpeg" class="d-block w-100" alt="Trabalho 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 3">
+                                <img src="images/cab2-fot3.jpeg" class="d-block w-100" alt="Trabalho 3">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
@@ -165,15 +104,12 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <!-- Button to Schedule -->
-                    <button class="btn btn-dark btn-schedule" onclick="scheduleTime()">Marcar Horário</button>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Marcar Horário</button>
                 </div>
             </div>
-
-            <!-- Professional 3 -->
             <div class="col-md-4">
                 <div class="professional-card">
-                    <img src="https://via.placeholder.com/150" alt="Foto do profissional" class="professional-img">
+                    <img src="images/cabeleireira-3.jpeg" alt="Foto do profissional" class="professional-img">
                     <h3>Joana Pereira</h3>
                     <p>Manicure e pedicure</p>
                     <div class="social-icons">
@@ -181,18 +117,16 @@
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
-                    
-                    <!-- Carrossel de Trabalhos -->
                     <div id="carousel3" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 1">
+                                <img src="images/cab3-fot1.jpeg" class="d-block w-100" alt="Trabalho 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 2">
+                                <img src="images/cab3-fot2.jpeg" class="d-block w-100" alt="Trabalho 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://via.placeholder.com/400x300" class="d-block w-100" alt="Trabalho 3">
+                                <img src="images/cab3-fot3.jpeg" class="d-block w-100" alt="Trabalho 3">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
@@ -204,25 +138,12 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <!-- Button to Schedule -->
-                    <button class="btn btn-dark btn-schedule" onclick="scheduleTime()">Marcar Horário</button>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Marcar Horário</button>
                 </div>
             </div>
         </div>
-      </div>
-
-    <script>
-        function scheduleTime() {
-            const isLogged = false // substituir por lógica de identificar login
-
-            if (isLogged) {
-                window.location.href="principal.html" // depois vai ir para área de agendamento com informação de qual profissional
-            } else {
-                window.location.href="login.html"
-            }
-        }
-    </script>
-
+    </div>
+    <script type="text/javascript" src="../js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

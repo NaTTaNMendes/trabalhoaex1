@@ -10,6 +10,18 @@ function goToAgendamentos() {
     window.location.href = 'agendamentos.html'; 
 }
 
+function backMainPage() {
+    window.location.href = 'principal.html'; 
+}
+
+function goToHistorico() {
+    window.location.href = 'historico.html'; 
+}
+
+function goToLogin() {
+    window.location.href = '/sistema/login.html'; 
+}
+
 // Carregar o conteúdo da navbar
 fetch('navbar.html')
 .then(response => response.text())
@@ -17,3 +29,4 @@ fetch('navbar.html')
     document.getElementById('navbar').innerHTML = data;
 })
 .catch(error => console.error('Erro ao carregar a navbar:', error));
+
