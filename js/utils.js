@@ -19,7 +19,7 @@ function goToHistorico() {
 }
 
 function goToLogin() {
-    window.location.href = '/sistema/login.html'; 
+    window.location.href = 'sistema/login.html'; 
 }
 
 // Carregar o conteúdo da navbar
