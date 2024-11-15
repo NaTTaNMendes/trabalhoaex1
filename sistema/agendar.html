@@ -21,46 +21,17 @@
                         <form id="appointmentForm">
                             <div class="form-group">
                                 <label for="serviceType">Tipos de Serviço</label>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="corte_masculino" onclick="toggleCard('corte_masculino')"><h5>Corte Masculino</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="corte_feminino" onclick="toggleCard('corte_feminino')"><h5>Corte Feminino</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="tratamento_capilar" onclick="toggleCard('tratamento_capilar')"><h5>Tratamento Capilar</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="coloracao" onclick="toggleCard('coloracao')"><h5>Coloração</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="escova" onclick="toggleCard('escova')"><h5>Escova</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="manicure" onclick="toggleCard('manicure')"><h5>Manicure</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="pedicure" onclick="toggleCard('pedicure')"><h5>Pedicure</h5></div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card-servico" id="tratamento" onclick="toggleCard('tratamento')"><h5>Tratamento</h5></div>
-                                    </div>
-                                </div>
+                                <div id="beauty-item-list" class="row"></div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="professionalSelect">Profissional</label>
-                                <select class="form-control" id="professionalSelect">
-                                    <option>Jane Smith</option>
-                                    <option>John Doe</option>
-                                    <option>Paula Johnson</option>
-                                </select>
+                                <select class="form-control" id="professionalSelect"></select>
                             </div>
                             
                             <div class="form-group">
                                 <label for="dateInput">Data</label>
-                                <input type="date" class="form-control" id="dateInput" onchange="updateTimeSlots()">
+                                <input type="date" class="form-control" id="dateInput">
                             </div>
                             
                             <div class="form-group">
@@ -74,59 +45,90 @@
                                 <label for="notes">Observações (Opcional)</label>
                                 <textarea class="form-control" id="notes" rows="3" placeholder="Escreva algo..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-block">Confirmar Agendamento</button>
                         </form>
+                        <button id="newAppointment" class="btn btn-dark btn-block">Confirmar Agendamento</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <script src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/content-manager.js"></script>
+    <script src="../js/main.js"></script>
 
     <script>
-        // Toggle card expansion and collapse without resizing the form
+        document.addEventListener("DOMContentLoaded", [setTodayAsDefault(), updateTimeSlots()])
+
+        function setTodayAsDefault() {
+            const dateInput = document.getElementById('dateInput');
+            const today = new Date();
+
+            const formattedDate = today.toISOString().split('T')[0];
+
+            dateInput.min = formattedDate;
+            dateInput.value = formattedDate;
+        }
+
         function toggleCard(serviceId) {
             const card = document.getElementById(serviceId);
             card.classList.toggle('expanded');
         }
 
-        // Hardcoded unavailable times (for example purposes)
-        const unavailableTimes = {
-            '2024-09-28': ['09:00', '10:00', '14:00'], // These slots are reserved
-            '2024-09-29': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'], // Reserved slots for this date
-        };
-
-        // Function to update available time slots based on selected date
         function updateTimeSlots() {
-            const date = document.getElementById('dateInput').value;
             const timeInput = document.getElementById('timeInput');
-            
-            // Clear previous time options
+
             timeInput.innerHTML = '';
 
-            const allTimes = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
-            const reservedTimes = unavailableTimes[date] || []; // Get reserved times for selected date
+            const availableTimes = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
 
-            // Add available times to the select input
-            allTimes.forEach(time => {
-                if (!reservedTimes.includes(time)) {
-                    const option = document.createElement('option');
-                    option.value = time;
-                    option.text = time;
-                    timeInput.appendChild(option);
-                }
-            });
-
-            // If no available times, show a message
-            if (timeInput.options.length === 0) {
+            availableTimes.forEach(time => {
                 const option = document.createElement('option');
-                option.value = '';
-                option.text = 'Nenhum horário disponível';
+                option.value = time;
+                option.text = time;
                 timeInput.appendChild(option);
-            }
+            });
         }
+
+        document.getElementById("newAppointment").addEventListener("click", () => {
+            const selectedBeautyItems = document.querySelectorAll(".expanded");
+            const beautyItemIDs = Array.from(selectedBeautyItems)
+                            .map(item => Number(item.getAttribute("data-beit-id")));
+
+
+            const selectedEmployee = document.getElementById("professionalSelect");
+            const employeeId = selectedEmployee.options[selectedEmployee.selectedIndex].dataset.employeeId;
+
+            const selectedDate = document.getElementById("dateInput").value;
+            const selectedTime = document.getElementById("timeInput").value;
+            const appointmentDateTime = getLocalDateTime(selectedDate, selectedTime);
+
+            const description = document.getElementById("notes");
+
+            let appointmentData = {
+                startInterval: appointmentDateTime,
+                employeeId: employeeId,
+                beautyItemIds: beautyItemIDs
+            }
+
+            if (description.value != "") {
+                appointmentData.description = description.value;
+            }
+
+            scheduleAppointment(appointmentData);
+        })
+
     </script>
 
-    <script type="text/javascript" src="../js/utils.js"></script>    
+
+    <script>
+        window.onload = function() {
+            listBeautyItemsInSchedulingPage();
+            listEmployeesInSchedulingPage();
+        };
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

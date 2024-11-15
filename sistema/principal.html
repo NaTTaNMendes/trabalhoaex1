@@ -75,7 +75,7 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-4">
-                        <div class="card h-100 cartao-selecao" onclick="goToAgendar()">
+                        <div class="card h-100 cartao-selecao" onclick="goTo('AGENDAR')">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Agendar</h5>
                                 <p class="card-text">Agendar cortes, tratamentos, pinturas, etc.</p>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 cartao-selecao" onclick="goToAgendamentos()">
+                        <div class="card h-100 cartao-selecao" onclick="goTo('AGENDAMENTOS')">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Agendamentos</h5>
                                 <p class="card-text">Verificar os agendamentos para os atendimentos que irão ocorrer.</p>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 cartao-selecao" onclick="goToHistorico()">
+                        <div class="card h-100 cartao-selecao" onclick="goTo('HISTORICO')">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Histórico</h5>
                                 <p class="card-text">Verificar o históricos de agendamentos já feitos.</p>
@@ -104,18 +104,19 @@
                 <div class="container-right flex-grow-1 d-flex flex-column">
                   <div class="rpg-card flex-grow-1">
                     <div class="rpg-card-content">
-                      <h4 class="rpg-card-title">Nattan Mendes Tinonin</h4>
+                      <h4 class="rpg-card-title" id="userName"></h4>
                       <ul class="list-group">
-                        <li class="list-group-item">Tipo de cabelo: <span id="hairType">Ondulado</span></li>
-                        <li class="list-group-item">Formato de rosto: <span id="faceFormat">Redondo</span></li>
+                        <li class="list-group-item">Tipo de cabelo: <span id="hairType"></span></li>
+                        <li class="list-group-item">Formato de rosto: <span id="faceShape"></span></li>
                         <li class="list-group-item">Profissional favorito: <span id="favoriteProfessional">Jane Smith</span></li>
                         <li class="list-group-item">Pontos fidelidade: <span id="points">1200</span></li>
                       </ul>
                     </div>
                   </div>
                   <div class="container-fluid">
-                    <div class="d-flex justify-content-center" style="margin: 25px;">
+                    <div class="d-flex flex-column justify-content-center m-4" style="margin: 25px;">
                       <button type="button" class="btn btn-dark"><a href="selecao_rosto.html">Atualizar status</a></button>
+                      <button onclick="logout()" type="button" class="btn btn-dark">Logout</button>
                     </div>
                   </div>
                 </div>
@@ -123,7 +124,16 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="../js/utils.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/content-manager.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        window.onload = function() {
+            getUserProfile();
+        };
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

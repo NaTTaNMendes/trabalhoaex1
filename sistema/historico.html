@@ -25,57 +25,21 @@
                         <th scope="col">Profissional</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="appointment-history">
                 </tbody>
             </table>
         </div>
     </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/content-manager.js"></script>
+    <script src="../js/main.js"></script>
+
     <script>
-        const pastAppointments = [
-            {
-                profissional: 'Jane Smith',
-                servicos: ['Corte de Cabelo', 'Tratamento Capilar'],
-                data: '2024/07/15',
-                horario: '10:00',
-            },
-            {
-                profissional: 'John Doe',
-                servicos: ['Pintura'],
-                data: '2024/07/20',
-                horario: '12:00',
-            },
-            {
-                profissional: 'Paula Johnson',
-                servicos: ['Corte de Cabelo'],
-                data: '2024/07/22',
-                horario: '09:00',
-            }
-        ];
-        function populatePastAppointments() {
-            const container = document.querySelector('tbody');
-
-            pastAppointments.forEach((appointment) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${appointment.data}</td>
-                    <td>${appointment.horario}</td>
-                    <td>${appointment.servicos.join(', ')}</td>
-                    <td>${appointment.profissional}</td>
-                `;
-                container.appendChild(row);
-            });
-
-            if (container.children.length === 0) {
-                const emptyRow = document.createElement('tr');
-                emptyRow.classList.add('text-center');
-                emptyRow.innerHTML = '<td colspan="4">Nenhum histórico de agendamentos disponível.</td>';
-                container.appendChild(emptyRow);
-            }
-        }
-
-        window.onload = populatePastAppointments;
+        window.onload = listAppointmentHistory();
     </script>
-    <script type="text/javascript" src="../js/utils.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
