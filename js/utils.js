@@ -1,4 +1,4 @@
-const BASE_URL = "https://beauty-salon-scheduler.onrender.com";
+const BASE_URL = "http://localhost:8080";
 
 const LOCATIONS = {
     AGENDAR: "/sistema/agendar.html",
