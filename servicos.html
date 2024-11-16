@@ -35,18 +35,66 @@
     </nav>
       <div class="container services">
         <h1 class="text-center my-5">Serviços</h1>
-        <div id="beauty-items" class="row"></div>
-    </div>
-
-    <script src="/js/utils.js"></script>
-    <script src="/js/api.js"></script>
-    <script src="/js/content-manager.js"></script>
-    <script src="/js/main.js"></script>
-    <script>
-        window.onload = function() {
-            listBeautyItems();
-        };
-    </script>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/corte-feminino.jpeg" alt="Corte Feminino">
+                    <h3>Corte Feminino</h3>
+                    <p class="service-price">R$ 80,00</p>
+                    <p class="service-description">Corte moderno e personalizado para cada cliente, feito com técnicas atualizadas.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/corte-masculino.jpeg" alt="Corte Masculino">
+                    <h3>Corte Masculino</h3>
+                    <p class="service-price">R$ 50,00</p>
+                    <p class="service-description">Corte masculino com estilo e precisão, para valorizar o visual.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/coloracao.jpeg" alt="Coloração Completa">
+                    <h3>Coloração Completa</h3>
+                    <p class="service-price">R$ 150,00</p>
+                    <p class="service-description">Coloração capilar feita por especialistas, com produtos de alta qualidade.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/escova.jpeg" alt="Escova e Penteado">
+                    <h3>Escova e Penteado</h3>
+                    <p class="service-price">R$ 60,00</p>
+                    <p class="service-description">Escova modeladora e penteado sofisticado para ocasiões especiais.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/pedicure.jpeg" alt="Manicure e Pedicure">
+                    <h3>Manicure e Pedicure</h3>
+                    <p class="service-price">R$ 40,00</p>
+                    <p class="service-description">Cuidado completo para suas mãos e pés, com esmaltação impecável.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="images/tratamento-capilar.jpeg" alt="Tratamento Capilar">
+                    <h3>Tratamento Capilar</h3>
+                    <p class="service-price">R$ 120,00</p>
+                    <p class="service-description">Tratamentos capilares para hidratação, reconstrução e nutrição dos fios.</p>
+                    <button class="btn btn-dark btn-schedule" onclick="goToLogin()">Agendar</button>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <script type="text/javascript" src="./js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

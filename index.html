@@ -146,7 +146,7 @@
   <div class="collapse navbar-collapse" id="navbarContent">
     <div class="navbar-nav ml-auto">
       <a class="nav-link" href="#sobre-nos">SOBRE NÓS</a>
-      <a class="nav-link" href="servicos.html">SERVIÇOS</a>
+      <a class="nav-link" href="sistema/login.html">SERVIÇOS</a>
       <a class="nav-link" href="profissionais.html">PROFISSIONAIS</a>
     </div>
   </div>
@@ -171,14 +171,14 @@
     </p>
     <div class="row">
       <div class="col-md-6 mb-6">
-        <div class="card box" onclick="goTo('PROFISSIONAIS')">
+        <div class="card box" onclick="goToProfissionais()">
           <img src="./images/profissional.webp" class="card-img-top" alt="Image 2">
           <div class="card-body">
             <h5 class="card-title text-center">Profissionais</h5>
           </div>
         </div>
       </div>
-      <div class="col-md-6 mb-6" onclick="goTo('SERVICOS')">   
+      <div class="col-md-6 mb-6" onclick="goToServicos()">   
         <div class="card box">
           <img src="./images/servicos.webp" class="card-img-top" alt="Image 2">
           <div class="card-body">
@@ -218,8 +218,15 @@
     </div>
 </footer>
 
-<script src="js/utils.js"></script>
-
+<script>
+  function goToProfissionais() {
+      window.location.href = 'profissionais.html'; 
+  }
+  function goToServicos() {
+      window.location.href = 'servicos.html'; 
+  }
+</script>
+  
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

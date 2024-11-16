@@ -37,18 +37,6 @@
     margin-bottom: 15px;
 }
 
-.service-duration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.service-duration i.ph.ph-clock {
-    color: blue;
-    font-size: large;
-}
-
 .btn-schedule {
     margin-top: 10px;
 }
@@ -68,23 +56,10 @@
     margin-bottom: 10px;
 }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    margin: 2px;
-    color: #555;
-}
-
 .social-icons i {
-    font-size: 20px;
-}
-
-.social-icons a {
+    margin: 5px;
+    font-size: 24px;
     color: #555;
-    text-decoration: none;
-    font-size: 16px;
 }
 
 .carousel-item img {
