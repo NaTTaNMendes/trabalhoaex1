@@ -23,7 +23,9 @@
                                 <label for="serviceType">Tipos de Serviço</label>
                                 <div class="row" id="service-list"></div>
                             </div>
-                            
+                            <div class="price-container">
+                                <span id="totalPrice">0.00</span>
+                            </div>
                             <div class="form-group">
                                 <label for="professionalSelect">Profissional</label>
                                 <select class="form-control" id="professionalSelect">
@@ -62,6 +64,22 @@
         function toggleCard(serviceId) {
             const card = document.getElementById(serviceId);
             card.classList.toggle('expanded');
+
+            updateTotalPrice()
+        }
+
+        function updateTotalPrice() {
+            const totalPrice = document.getElementById("totalPrice");
+            const selected = document.querySelectorAll(".expanded>span")
+
+            let value = 0;
+
+            selected.forEach(b => {
+                value += Number(b.innerHTML);
+            });
+
+            totalPrice.innerHTML = ensureDecimal(value);
+            
         }
 
         window.onload = [

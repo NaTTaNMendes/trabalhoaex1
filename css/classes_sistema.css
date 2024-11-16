@@ -32,11 +32,30 @@
     height: 80px;
     text-align: center;
     align-content: center;
+    user-select: none;
+}
+.card-servico #price {
+    color: rgb(255, 255, 255);
+}
+.card-servico #price::before {
+    content: "R$ ";
 }
 .card-servico.expanded {
     height: 81px;
     background-color: #222;
     transform: scale(1.05);
+}
+.price-container {
+    display: flex;
+    justify-content: right;
+    user-select: none;
+}
+#totalPrice {
+    font-weight: 600;
+    text-align: right;
+}
+#totalPrice::before {
+    content: "Total: R$ ";
 }
 .btn-dark {
     background-color: #333;

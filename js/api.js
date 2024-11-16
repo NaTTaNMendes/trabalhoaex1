@@ -245,7 +245,7 @@ async function getBeautyItems() {
 
     data.forEach(bi => {
         beautyItems += `<div class="col-md-4 mb-3">
-                            <div class="card-servico" id="${bi.id}" onclick="toggleCard(this.id)"><h5>${bi.name}</h5></div>
+                            <div class="card-servico" id="${bi.id}" onclick="toggleCard(this.id)"><h5>${bi.name}</h5><span id="price">${ensureDecimal(bi.price)}</span></div>
                         </div>`
     });
 

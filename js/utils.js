@@ -64,6 +64,16 @@ function parseLocalDateTime(localDateTime) {
     };
 }
 
+function ensureDecimal(number) {
+    const parsedNumber = parseFloat(number);
+  
+    if (isNaN(parsedNumber)) {
+        throw new Error("O valor fornecido não é um número válido.");
+    }
+  
+    return parsedNumber.toFixed(2);
+}
+
 function logout() {
     localStorage.removeItem("token");
     goToPage("login")
