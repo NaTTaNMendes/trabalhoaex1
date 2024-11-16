@@ -29,8 +29,8 @@
                             <label for="username">Novo Nome de Usuário:</label>
                             <input type="text" class="form-control" id="username" placeholder="Digite seu nome de usuário" required>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-block">Salvar Alterações</button>
                     </form>
+                    <button class="btn btn-dark btn-block" id="update-username">Salvar novo nome</button>
                 </div>
                 <div class="tab-pane fade" id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
                     <form>
@@ -46,8 +46,8 @@
                             <label for="confirm-password">Confirmar Nova Senha:</label>
                             <input type="password" class="form-control" id="confirm-password" placeholder="Confirme sua nova senha" required>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-block">Salvar Nova Senha</button>
                     </form>
+                    <button class="btn btn-dark btn-block" onclick="goToPage('erro_nao_implementado')">Salvar Nova Senha</button>
                 </div>
             </div>
         </div>
@@ -55,6 +55,14 @@
         
 
     <script type="text/javascript" src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script>
+        document.getElementById("update-username").addEventListener("click", () => {
+            const newName = document.getElementById("username");
+
+            updateUserName(newName.value);
+        })
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
