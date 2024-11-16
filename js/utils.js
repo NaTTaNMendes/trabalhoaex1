@@ -1,25 +1,44 @@
-function deslogar() {
-    window.location.href = 'login.html';
+const BASE_URL = "https://beauty-salon-scheduler.onrender.com";
+
+function goToPage(page) {
+    if (window.location.href.includes('sistema/')) {
+        window.location.href = `${page}.html`; 
+    } else {
+        window.location.href = `sistema/${page}.html`;
+    } 
 }
 
-function goToAgendar() {
-    window.location.href = 'agendar.html'; 
-}
+async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
+    let headers = {
+        'Content-Type': 'application/json'
+    };
 
-function goToAgendamentos() {
-    window.location.href = 'agendamentos.html'; 
-}
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
 
-function backMainPage() {
-    window.location.href = 'principal.html'; 
-}
+    const options = {
+        method: method,
+        headers: headers
+    };
 
-function goToHistorico() {
-    window.location.href = 'historico.html'; 
-}
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
 
-function goToLogin() {
-    window.location.href = 'sistema/login.html'; 
+    try {
+        const response = await fetch(`${BASE_URL}${endpoint}`, options);
+
+        if (response.status === 403) {
+            localStorage.removeItem("token");
+            goToPage('login');
+        }
+            
+        return response
+    } catch (error) {
+        console.error('Erro ao fazer a requisição:', error);
+        throw error;
+    }
 }
 
 // Carregar o conteúdo da navbar
