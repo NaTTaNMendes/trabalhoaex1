@@ -16,7 +16,7 @@
             <h2 style="color: white; text-align: center; padding: 1%;">Selecione a sua curvatura de cabelo</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card-selecao" onclick="backMainPage()">
+                    <div class="card-selecao" onclick="selectHairType('STRAIGHT')">
                         <img src="../images/liso.png" class="card-img-top" alt="Face Shape 1">
                         <div class="card-body text-center">
                             <p class="card-text">Liso</p>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card-selecao" onclick="backMainPage()">
+                    <div class="card-selecao" onclick="selectHairType('WAVY')">
                         <img src="../images/ondulado.png" class="card-img-top" alt="Face Shape 1">
                         <div class="card-body text-center">
                             <p class="card-text">Ondulado</p>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card-selecao" onclick="backMainPage()">
+                    <div class="card-selecao" onclick="selectHairType('CURLY')">
                         <img src="../images/cacheado.png" class="card-img-top" alt="Face Shape 1">
                         <div class="card-body text-center">
                             <p class="card-text">Cacheado</p>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card-selecao" onclick="backMainPage()">
+                    <div class="card-selecao" onclick="selectHairType('KINKY')">
                         <img src="../images/crespo.png" class="card-img-top" alt="Face Shape 1">
                         <div class="card-body text-center">
                             <p class="card-text">Crespo</p>
@@ -50,7 +50,15 @@
             </div>
         </div>
     </div>
+    <script>
+        function selectHairType(hairType) {
+            localStorage.setItem('selectHairType', hairType);
+            updateProfile();
+            goToPage('principal');
+        }
+    </script>
 
+    <script type="text/javascript" src="../js/api.js"></script>    
     <script type="text/javascript" src="../js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
