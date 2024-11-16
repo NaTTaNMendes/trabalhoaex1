@@ -35,3 +35,11 @@ O The Hair Coalition é um sistema de gerenciamento de salões de beleza que vis
   <img src="gato_cortando_cabelo.png" alt="gato no cabeleireiro" />
 </p>
 
+## BACKEND
+
+Link para o Back: https://github.com/martingarrote/beauty-salon-scheduler
+
+## Autores
+Martin Dambrowski Stabel Garrote
+
+Nattan Mendes Tinonin
