@@ -41,6 +41,15 @@ async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
     }
 }
 
+function getLocalDateTime(dateValue, timeValue) {
+    const [year, month, day] = dateValue.split('-');
+    const [hours, minutes] = timeValue.split(':');
+
+    const dateTime = new Date(Date.UTC(year, month - 1, day, hours, minutes, 0));
+    
+    return dateTime.toISOString().slice(0, 19);
+}
+
 function parseLocalDateTime(localDateTime) {
     const [date, time] = localDateTime.split('T');
     const [year, month, day] = date.split('-');
@@ -55,7 +64,11 @@ function parseLocalDateTime(localDateTime) {
     };
 }
 
-// Carregar o conteúdo da navbar
+function logout() {
+    localStorage.removeItem("token");
+    goToPage("login")
+}
+
 fetch('navbar.html')
 .then(response => response.text())
 .then(data => {

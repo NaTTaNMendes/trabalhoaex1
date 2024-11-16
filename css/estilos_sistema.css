@@ -1,3 +1,13 @@
+#edit-profile-tab, #change-password-tab, #selecao_rosto {
+    color: white;
+    text-decoration: none;
+}
+
+#edit-profile-tab[aria-selected="true"], #change-password-tab[aria-selected="true"] {
+    color: #495057 !important;
+}
+
+
 body {
     background-image: url('../images/folhas.webp');
     background-repeat: repeat;

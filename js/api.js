@@ -25,7 +25,7 @@ async function signup() {
     const response = await apiRequest("/api/users/signup", "POST", userData);
 
     if (response.status == 201) {
-        goToLogin();
+        goToPage('login');
     } else {
         alert("Email ja cadastrado! Tente novamente com outro email.");
         return;
@@ -94,13 +94,14 @@ async function getPastAppointments() {
             const row = document.createElement('tr');
             const ap = data[i];
 
-            tempo_convertido = parseLocalDateTime(ap.startInterval);
+            const parsedTime = parseLocalDateTime(ap.startInterval);
 
             row.innerHTML = `
-                <td>${tempo_convertido.dateValue}</td>
-                <td>${tempo_convertido.timeValue}</td>
+                <td>${parsedTime.dateValue}</td>
+                <td>${parsedTime.timeValue}</td>
                 <td>${ap.beautyItems.map(ap => ap.name).join(', ')}</td>
                 <td>${ap.employee.name}</td>
+                <td>R$ ${ap.totalPrice}</td>
             `;
             container.appendChild(row);
         }
@@ -108,7 +109,46 @@ async function getPastAppointments() {
         if (container.children.length === 0) {
             const emptyRow = document.createElement('tr');
             emptyRow.classList.add('text-center');
-            emptyRow.innerHTML = '<td colspan="4">Nenhum histórico de agendamentos disponível.</td>';
+            emptyRow.innerHTML = '<td colspan="5">Nenhum histórico de agendamentos disponível.</td>';
+            container.appendChild(emptyRow);
+        }
+            
+    } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+    }
+}
+
+async function getNextAppointments() {
+    try {
+        const response = await apiRequest("/api/appointments", "GET", null, localStorage.getItem("token"));
+        const data = await response.json();
+        const container = document.getElementById("upcoming-appointments");
+
+        for (let i = 0; i < data.length; i++) {
+            const row = document.createElement('tr');
+            const ap = data[i];
+
+            const parsedTime = parseLocalDateTime(ap.startInterval);
+
+            if (ap.active) {
+                row.innerHTML = `
+                <td>${parsedTime.dateValue}</td>
+                <td>${parsedTime.timeValue}</td>
+                <td>${ap.beautyItems.map(ap => ap.name).join(', ')}</td>
+                <td>${ap.employee.name}</td>
+                <td>R$ ${ap.totalPrice}</td>
+                <td class="text-center">
+                    <button class="btn btn-danger " onclick="cancelAppointment(${ap.id})">Cancelar</button>
+                </td>
+            `;
+            container.appendChild(row);
+            }
+        }
+
+        if (container.children.length === 0) {
+            const emptyRow = document.createElement('tr');
+            emptyRow.classList.add('text-center');
+            emptyRow.innerHTML = '<td colspan="6">Nenhum agendamento disponível.</td>';
             container.appendChild(emptyRow);
         }
             
@@ -173,5 +213,68 @@ async function collectProfile() {
         }
     } catch (error) {
         console.error("Erro na requisição coleta de dados do usuário:", error);
+    }
+}
+
+async function cancelAppointment(id) {
+    await apiRequest(`/api/appointments/cancel/${id}`, "PATCH", null, localStorage.getItem("token"));
+    location.reload();
+}
+
+async function getEmployees() {
+    const container = document.getElementById("professionalSelect");
+    const response = await apiRequest("/api/users/employees", "GET")
+
+    const data = await response.json();
+
+    let employeeList = "";
+
+    data.forEach(emp => {
+        employeeList += `<option id="${emp.id}">${emp.name}</option>`
+    });
+
+    container.innerHTML = employeeList
+}
+
+async function getBeautyItems() {
+    const response = await apiRequest("/api/beauty-items", "GET")
+    const data = await response.json();
+    const container = document.getElementById("service-list");
+
+    let beautyItems = "";
+
+    data.forEach(bi => {
+        beautyItems += `<div class="col-md-4 mb-3">
+                            <div class="card-servico" id="${bi.id}" onclick="toggleCard(this.id)"><h5>${bi.name}</h5></div>
+                        </div>`
+    });
+
+    container.innerHTML = beautyItems;
+}
+
+async function scheduleAppointment() {
+    const appointmentData = getAppointmentData();
+
+    console.log(appointmentData);
+
+    const response = await apiRequest("/api/appointments", "POST", appointmentData, localStorage.getItem("token"))
+
+    console.log(response.status)
+
+    if (response.status === 201) {
+        goToPage("principal");
+    }
+}
+
+async function updateUserName(name) {
+    if (name.length == 0) {
+        alert("O nome não pode ser vazio!");
+    } else {
+        let response = await apiRequest("/api/users/profile", "PATCH", {name: name}, localStorage.getItem("token"));
+        response = await response.json();
+
+        if (response) {
+            goToPage("principal");
+        }
     }
 }
