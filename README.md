@@ -32,7 +32,7 @@ O The Hair Coalition é um sistema de gerenciamento de salões de beleza que vis
 3. Configure as opções de gerenciamento do sistema, como o cadastro de clientes e serviços
 
 <p align="center">
-  <img src="gato_cortando_cabelo.png" alt="gato no cabeleireiro" />
+  <img src="/images/gato_cortando_cabelo.png" alt="gato no cabeleireiro" />
 </p>
 
 ## BACKEND
